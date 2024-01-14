@@ -1,0 +1,204 @@
+/* Fonts
+--------------------------*/
+@import url("https://rsms.me/inter/inter-ui.css");
+
+/* Variables
+---------------------------*/
+
+:root {
+
+  --color-teal-T1000: #052028;
+  --color-teal-T900: #054861;
+  --color-teal-T800: #0F6A80;
+
+  --color-gray-L700: #33373B;
+  --color-gray-L200: #F2F5F8;
+  --color-gray-D200: #A3A8AC;
+
+  --color-red-R600: #DB4648;
+
+  --body-border: .6em;
+  --body-padding: 3vw;
+  --color-mode: 'light';
+  --background: var(--color-gray-L200);
+  --background-alt:  var(--color-gray-D200);
+  --text-color: var(--color-gray-L700);
+  --mode-icon: '🌑';
+  --mode-icon-opacity: '1';
+  --border-color: var(--text-color);
+}
+
+/* Global
+---------------------------*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-red-R600);
+  color: var(--color-gray-L200);
+}
+
+html {
+  height: 100vh;
+  padding: var(--body-border);
+  background-color: var(--background-alt);
+}
+
+body {
+  min-height: calc(100vh - var(--body-border)*2);
+  margin: 0;
+  padding: 2.5vw 2.5vw 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  background-color: var(--background);
+  border-radius: 5px;
+  font-size: 112.5%;
+  font-family: "Inter UI", Helvetica, Arial, sans-serif;
+  line-height: 1.4;;
+  color: var(--text-color);
+}
+
+body.no-js {
+  padding-top: 5vw;
+}
+
+/* Header
+---------------------------*/
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 0 1;
+}
+
+/* Main
+---------------------------*/
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  flex: 1;
+}
+
+@media screen and (min-width: 800px) {
+  main {
+    flex-direction: row;
+  }
+}
+
+/* About section
+---------------------------*/
+
+.about {
+  padding: 1rem var(--body-padding) 0;
+  flex: 1 0 1;;
+}
+
+@media screen and (min-width: 800px) {
+  .about {
+    padding: 1rem 0 0;
+    flex: 1;
+  }
+}
+
+.about,
+.links {
+  border-top: 4px solid var(--border-color);
+}
+
+.about > * {
+  margin: 0 0 1rem;
+  font-size: clamp(1rem, 1.5vw, 2.3rem);
+}
+
+.about h1 {
+  font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+}
+
+/* Links section
+---------------------------*/
+
+.links {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.links > a {
+  padding-right: var(--body-padding);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex: 1;;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  font-size: 3vw;
+  color: var(--text-color);
+}
+
+.links > a > strong {
+  padding-left: var(--body-padding);
+  padding-right: .5em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  z-index: 1;
+}
+
+.links > a > strong:after {
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  background-color: var(--text-color);
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+  transform: translateY(-50%);
+}
+
+.links > a > hr {
+  border: none; /* Remove default border styles */
+  border-top: 1px solid #000; /* Set a solid black border on the top side */
+  margin: 0.5rem 0; /* Adjust spacing above and below the horizontal line */
+}
+
+@media screen and (min-width: 800px) {
+  .links > a > strong:after {
+    height: 80%;
+  }
+}
+
+.links > a:hover > strong:after,
+.links > a:focus > strong:after {
+  opacity: .5;
+}
+
+.links > a > span {
+  position: relative;
+  font-size: clamp(1rem, 2vw, 2rem);
+  transition: transform 150ms ease-in-out;
+  transform: translateX(-100%);
+  z-index: 0;
+}
+
+.links > a:hover > span,
+.links > a:focus > span  {
+  transform: translateX(1em);
+}
+
+.links > a:focus {
+  outline: none;
+}
+
+.links > a:focus,
+.links > a:focus > strong {
+  background-color: var(--background-alt);
+}
